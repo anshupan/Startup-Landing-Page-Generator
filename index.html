@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Landing Page Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <h1>Startup Landing Page Generator</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="darkModeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn btn-primary" id="exportBtn">
+                        <i class="fas fa-download"></i>
+                        Export Code
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Panel -->
+            <section class="input-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-cog"></i> Customize Your Landing Page</h2>
+                    <p>Fill in the details below and watch your landing page come to life! 🚀</p>
+                </div>
+
+                <form class="input-form" id="landingPageForm">
+                    <!-- Basic Info -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-info-circle"></i> Basic Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="brandName">
+                                Brand Name <i class="fas fa-question-circle" title="The name of your startup or product"></i>
+                            </label>
+                            <input type="text" id="brandName" placeholder="e.g., TechFlow, InnovateHub..." required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tagline">
+                                Tagline <i class="fas fa-question-circle" title="A catchy phrase that describes your value proposition"></i>
+                            </label>
+                            <input type="text" id="tagline" placeholder="e.g., Start changing the world with our innovative solution...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">
+                                Product Description <i class="fas fa-question-circle" title="Tell people what your product does and why they should care"></i>
+                            </label>
+                            <textarea id="description" rows="3" placeholder="Describe your product in a compelling way. What problem does it solve? How does it make life better?"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Features -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-star"></i> Key Features</h3>
+                        <div id="featuresContainer">
+                            <div class="feature-item">
+                                <input type="text" class="feature-input" placeholder="e.g., Lightning fast performance" data-index="0">
+                                <button type="button" class="remove-feature" data-index="0">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-outline" id="addFeature">
+                            <i class="fas fa-plus"></i> Add Feature
+                        </button>
+                    </div>
+
+                    <!-- Design -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-palette"></i> Design & Styling</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="primaryColor">Primary Color</label>
+                                <input type="color" id="primaryColor" value="#6366f1">
+                            </div>
+                            <div class="form-group">
+                                <label for="secondaryColor">Secondary Color</label>
+                                <input type="color" id="secondaryColor" value="#8b5cf6">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fontFamily">Font Style</label>
+                            <select id="fontFamily">
+                                <option value="Inter">Inter (Modern & Clean)</option>
+                                <option value="Poppins">Poppins (Friendly & Approachable)</option>
+                                <option value="Montserrat">Montserrat (Professional & Elegant)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="theme">Theme</label>
+                            <select id="theme">
+                                <option value="light">Light & Bright</option>
+                                <option value="dark">Dark & Mysterious</option>
+                                <option value="minimal">Minimal & Clean</option>
+                                <option value="elegant">Elegant & Sophisticated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Logo Upload -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-image"></i> Logo (Optional)</h3>
+                        <div class="form-group">
+                            <label for="logoUpload">Upload Logo</label>
+                            <input type="file" id="logoUpload" accept="image/*">
+                            <div class="file-upload-info">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Click to upload your logo (PNG, JPG, SVG)</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Preview Panel -->
+            <section class="preview-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-eye"></i> Live Preview</h2>
+                    <div class="preview-controls">
+                        <button class="btn btn-sm" id="desktopView" title="Desktop View">
+                            <i class="fas fa-desktop"></i>
+                        </button>
+                        <button class="btn btn-sm" id="tabletView" title="Tablet View">
+                            <i class="fas fa-tablet-alt"></i>
+                        </button>
+                        <button class="btn btn-sm" id="mobileView" title="Mobile View">
+                            <i class="fas fa-mobile-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="preview-container" id="previewContainer">
+                    <div class="preview-frame" id="previewFrame">
+                        <!-- Generated landing page will be inserted here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Code Export Modal -->
+        <div class="modal" id="exportModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-code"></i> Generated Code</h3>
+                    <button class="modal-close" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="code-tabs">
+                        <button class="tab-btn active" data-tab="html">HTML</button>
+                        <button class="tab-btn" data-tab="css">CSS</button>
+                        <button class="tab-btn" data-tab="full">Full Page</button>
+                    </div>
+                    <div class="code-content">
+                        <pre><code id="htmlCode"></code></pre>
+                        <pre><code id="cssCode"></code></pre>
+                        <pre><code id="fullCode"></code></pre>
+                    </div>
+                    <div class="code-actions">
+                        <button class="btn btn-primary" id="copyCode">
+                            <i class="fas fa-copy"></i> Copy Code
+                        </button>
+                        <button class="btn btn-secondary" id="downloadZip">
+                            <i class="fas fa-download"></i> Download ZIP
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
